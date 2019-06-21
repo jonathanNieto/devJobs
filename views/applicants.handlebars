@@ -1,0 +1,29 @@
+<main class="list-jobs mt-3">
+    <h2>Los candidatos</h2>
+
+    {{#if applicants.length}}
+    <table class="table table-hover table-striped table-responsive mt-3">
+        <thead>
+            <tr class="table-dark">
+                <th scope="col">Nombre</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Curriculum</th>                
+            </tr>
+        </thead>
+        <tbody>
+            {{#each applicants}}
+            <tr class="table-active">
+                <td>{{name}}</td>
+                <td>{{email}}</td>
+                <td class="text-center"><a href="/uploads/cvs/{{cv}}" rel="external" class="btn btn-sm btn-danger">Ver&nbsp;&nbsp;<i class="far fa-file-pdf"></i></a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    {{else}}
+    <div class="alert alert-dismissible alert-info">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Información!</strong> No hay candidatos para esta vacante :(
+    </div>
+    {{/if}}
+</main>

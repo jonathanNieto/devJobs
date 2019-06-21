@@ -1,0 +1,41 @@
+<main class="list-jobs mt-3">
+    <h2>Tus Vacantes</h2>
+
+    {{#if jobs.length}}
+    <table class="table table-hover table-striped table-responsive mt-3">
+        <thead>
+            <tr class="table-dark">
+                <th scope="col">Vacante</th>
+                <th scope="col">Empresa</th>
+                <th scope="col">Lugar de la vacante</th>
+                <th scope="col">Salario</th>
+                <th scope="col">Descripción</i></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each jobs}}
+            <tr class="table-active">
+                <td>{{title}}
+                    <p>{{applicants.length}} candidato(s)</p>
+                </td>
+                <td>{{company}}</td>
+                <td>{{location}}</td>
+                <td>{{salary}}</td>
+                <td class="text-center"><a href="/jobs/{{url}}" class="btn btn-sm btn-secondary">Ver&nbsp;&nbsp;<i class="far fa-eye"></a></td>
+                <td class="text-center"><a href="/applicants/{{id}}" class="btn btn-sm btn-warning" title="Ver candidatos">&nbsp;<i class="fas fa-user-friends"></i> &nbsp;</a></td>
+                <td><a href="/jobs/edit/{{url}}" class="btn btn-sm btn-info" title="Editar la vacante"> &nbsp;<i class="far fa-edit"></i> &nbsp;</a></td>
+                <td><a href="#" data-delete={{_id}} class="btn btn-sm btn-danger" title="Eliminar la vacante"> &nbsp;<i class="far fa-trash-alt"> &nbsp;</i></a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    {{else}}
+    <div class="alert alert-dismissible alert-info">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Información!</strong> No hay vacantes publicadas!!!
+    </div>
+    {{/if}}
+</main>

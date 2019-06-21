@@ -1,0 +1,59 @@
+<main class="container">
+  <h2>Información General</h2>
+  <form autocomplete="off" novalidate method="POST" action="/jobs/edit/{{job.url}}">
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Título: </label>
+      <div class="col-sm-10">
+        <input type="text" name="title" class="form-control" placeholder="Ej. React Developer"  value="{{job.title}}" required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Empresa: </label>
+      <div class="col-sm-10">
+        <input type="text" name="company" class="form-control" placeholder="Ej. React Systems"  value="{{job.company}}" required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Ubicación: </label>
+      <div class="col-sm-10">
+        <input type="text"  name="location"class="form-control" placeholder="Ej. México o Remoto" value="{{job.location}}"  required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Salario: </label>
+      <div class="col-sm-10">
+        <input type="text" name="salary" class="form-control" placeholder="Ej. $500 USD o $10,000 MXN"  value="{{job.salary}}" required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Contrato: </label>
+      <div class="col-sm-4">
+        <select name="contract" class="form-control">
+          {{#typeContract job.contract}}
+          <option value="" disabled selected>-- Selecciona --</option>
+          <option value="Freelance">Freelance</option>
+          <option value="Tiempo Completo">Tiempo Completo</option>
+          <option value="Medio Tiempo">Medio Tiempo</option>
+          <option value="Por Proyecto">Por Proyecto</option>
+          {{/typeContract}}
+        </select>
+      </div>
+    </div>
+    <h3>Descripción del puesto</h3>
+    <div>
+      <label for="">Descripción</label>
+      <input id="x" type="hidden" name="description" value="{{{job.description}}}">
+      <trix-editor input="x"></trix-editor>
+    </div>
+    <h3>Conocimientos requeridos</h3>
+    <ul class="lista-conocimientos">
+      {{#selectSkills job.skills}} 
+      {{/selectSkills}}
+    </ul>
+
+    <div>
+      <input type="hidden" name="skills" id="skills">
+      <input type="submit" value="Guardar" class="btn btn-info">
+    </div>
+  </form>
+</main>
